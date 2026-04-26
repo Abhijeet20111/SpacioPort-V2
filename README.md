@@ -22,7 +22,7 @@ npm run dev
 ```
 ### Backend
 
-See [backend/README.md](spacioport backend/README.md) for full setup instructions.
+See [spacioport backend/README.md](spacioport backend/README.md) for full setup instructions.
 
 ## Project Structure
 
