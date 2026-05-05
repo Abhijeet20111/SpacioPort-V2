@@ -7,12 +7,17 @@ const api = axios.create({
   withCredentials: true,
 });
 
-// Attach JWT token to every request
+
 api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('sp_token');
+  const adminToken = localStorage.getItem('sp_admin_token');
+  const userToken = localStorage.getItem('sp_token');
+
+  const token = adminToken || userToken;
+
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
+
   return config;
 });
 

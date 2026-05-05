@@ -25,26 +25,30 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   // On mount, check if we have a saved token and restore session
   useEffect(() => {
-    const token = localStorage.getItem('sp_token');
-    if (token) {
-      authAPI.me()
-        .then((res) => {
-          setUser(res.data.user);
-        })
-        .catch(() => {
-          localStorage.removeItem('sp_token');
-        })
-        .finally(() => setLoading(false));
-    } else {
-      setLoading(false);
-    }
-  }, []);
+  const token =
+    localStorage.getItem('sp_admin_token') ||
+    localStorage.getItem('sp_token');
+
+  if (token) {
+    authAPI.me()
+      .then((res) => {
+        setUser(res.data.user);
+      })
+      .catch(() => {
+        localStorage.removeItem('sp_token');
+        localStorage.removeItem('sp_admin_token');
+      })
+      .finally(() => setLoading(false));
+  } else {
+    setLoading(false);
+  }
+}, []);
 
   const login = async (email: string, password: string): Promise<boolean> => {
     try {
       const res = await authAPI.login(email, password);
       if (res.data.success) {
-        localStorage.setItem('sp_token', res.data.token);
+        localStorage.setItem(res.data.user.role === 'admin'?'sp_admin_token':'sp_token',res.data.token);
         setUser(res.data.user);
         return true;
       }
@@ -67,6 +71,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       const res = await authAPI.register(name, email, password);
       if (res.data.success) {
         localStorage.setItem('sp_token', res.data.token);
+        localStorage.setItem('sp_admin_token',res.data.token);
         setUser(res.data.user);
         return true;
       }
@@ -79,9 +84,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const logout = () => {
-    localStorage.removeItem('sp_token');
-    setUser(null);
-  };
+  localStorage.removeItem('sp_token');
+  localStorage.removeItem('sp_admin_token');
+  setUser(null);
+};
 
   return (
     <AuthContext.Provider value={{ user, isAuthenticated: !!user, loading, login, register, logout }}>

@@ -43,7 +43,7 @@ const Index = () => {
             Your Gateway to Flexible Workspaces & Business Growth
           </motion.h1>
           <motion.p initial="hidden" animate="visible" custom={1} variants={fadeUp} className="mx-auto mb-10 max-w-2xl text-lg opacity-80 md:text-xl">
-            Virtual offices, long-term leases with exclusive discounts, and on-demand spaces — plus powerful B2B promotional tools.
+            Virtual offices, long-term leases with exclusive discounts, and on-demand spaces - plus powerful B2B promotional tools.
           </motion.p>
           <motion.div initial="hidden" animate="visible" custom={2} variants={fadeUp} className="mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <button onClick={() => navigate('/spaces')} className="gradient-cta flex items-center gap-2 rounded-xl px-8 py-3.5 text-base font-bold text-accent-foreground shadow-lg transition hover:opacity-90">

@@ -27,11 +27,7 @@ router.get('/', protect, async (req, res) => {
   }
 });
 
-/**
- * POST /api/bookings
- * Public — anyone can submit a booking lead for a space.
- * If a JWT is provided, attach the user reference.
- */
+
 router.post('/', async (req, res) => {
   try {
     const { spaceId, name, email, phone, message } = req.body;
@@ -48,7 +44,7 @@ router.post('/', async (req, res) => {
       return res.status(404).json({ success: false, message: 'Space not found.' });
     }
 
-    // Try to attach the logged-in user (optional)
+    
     let userId;
     try {
       const jwt = require('jsonwebtoken');

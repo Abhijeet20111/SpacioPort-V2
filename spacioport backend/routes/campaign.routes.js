@@ -4,7 +4,7 @@ const { protect, adminOnly } = require('../middleware/auth');
 
 const router = express.Router();
 
-// GET /api/campaigns — user's campaigns (or all for admin)
+
 router.get('/', protect, async (req, res) => {
   try {
     const filter = req.user.role === 'admin' ? {} : { user: req.user._id };

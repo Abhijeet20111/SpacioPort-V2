@@ -7,7 +7,7 @@ const spaceSchema = new mongoose.Schema(
     duration: {
       type: String,
       enum: ['long-term', 'on-demand'],
-      // required only for physical spaces — enforced in validator below
+      // required only for physical spaces 
     },
     city: {
       type: String,

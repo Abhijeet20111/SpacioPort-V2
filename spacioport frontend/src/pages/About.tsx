@@ -20,7 +20,7 @@ const About = () => {
         <div className="mx-auto max-w-3xl">
           <h2 className="mb-6 text-3xl font-bold text-foreground">Our Story</h2>
           <p className="mb-6 leading-relaxed text-muted-foreground">
-            Founded in 2025, SpacioPort was born from a simple observation: businesses waste too much time and money on rigid office leases. We built a platform that connects companies of all sizes with flexible workspace solutions — from virtual offices to dedicated long-term spaces.
+            Founded in 2025, SpacioPort was born from a simple observation: businesses waste too much time and money on rigid office leases. We built a platform that connects companies of all sizes with flexible workspace solutions - from virtual offices to dedicated long-term spaces.
           </p>
           <p className="mb-12 leading-relaxed text-muted-foreground">
             Today, we serve over 5,000 members across 20+ cities, helping them work smarter, grow faster, and connect with like-minded professionals.
